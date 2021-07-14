@@ -117,39 +117,46 @@ namespace CadastroPet.Classes
             int id = int.Parse(Console.ReadLine());
             Console.WriteLine("Reinsira os dados do animal para atualizar:");
 
-            Animal animal = new Animal();
-            Console.WriteLine("Digite o nome do animal:");
-            Console.Write(">");
-            animal.Nome = Console.ReadLine();
-            Console.WriteLine("Digite o tipo do animal:");
-            Console.WriteLine("(1) - Cachorro / (2) - Gato");
-            Console.Write(">");
-            animal.Tipo = (ETipoAnimal)int.Parse(Console.ReadLine());
-            Console.WriteLine("Digite o cor do animal:");
-            Console.Write(">");
-            animal.Cor = Console.ReadLine();
-            Console.WriteLine("Digite o porte do animal:");
-            Console.Write(">");
-            animal.Porte = Console.ReadLine();
-            Console.WriteLine("Digite o peso do animal:");
-            Console.Write(">");
-            animal.Peso = int.Parse(Console.ReadLine());
-            Console.WriteLine("Digite o idade do animal:");
-            Console.Write(">");
-            animal.Idade = int.Parse(Console.ReadLine());
-            Console.WriteLine("Digite o nome do tutor do animal:");
-            Console.Write(">");
-            animal.NomeDoTutor = Console.ReadLine();
-            Console.WriteLine("Digite o endereço do tutor:");
-            Console.Write(">");
-            animal.Endereco = Console.ReadLine();
-            Console.WriteLine("Digite o telefone para contato:");
-            Console.Write(">");
-            animal.Telefone = Console.ReadLine();
+            Animal animal = repositorio.RetornarPorId(id);
+            if (animal != null)
+            {
+                Console.WriteLine("Digite o nome do animal:");
+                Console.Write(">");
+                animal.Nome = Console.ReadLine();
+                Console.WriteLine("Digite o tipo do animal:");
+                Console.WriteLine("(1) - Cachorro / (2) - Gato");
+                Console.Write(">");
+                animal.Tipo = (ETipoAnimal)int.Parse(Console.ReadLine());
+                Console.WriteLine("Digite o cor do animal:");
+                Console.Write(">");
+                animal.Cor = Console.ReadLine();
+                Console.WriteLine("Digite o porte do animal:");
+                Console.Write(">");
+                animal.Porte = Console.ReadLine();
+                Console.WriteLine("Digite o peso do animal:");
+                Console.Write(">");
+                animal.Peso = int.Parse(Console.ReadLine());
+                Console.WriteLine("Digite o idade do animal:");
+                Console.Write(">");
+                animal.Idade = int.Parse(Console.ReadLine());
+                Console.WriteLine("Digite o nome do tutor do animal:");
+                Console.Write(">");
+                animal.NomeDoTutor = Console.ReadLine();
+                Console.WriteLine("Digite o endereço do tutor:");
+                Console.Write(">");
+                animal.Endereco = Console.ReadLine();
+                Console.WriteLine("Digite o telefone para contato:");
+                Console.Write(">");
+                animal.Telefone = Console.ReadLine();
 
-            repositorio.Atualizar(id, animal);
+                repositorio.Atualizar(id, animal);
 
-            Console.WriteLine("Animal atualizado com sucesso!");
+                Console.WriteLine("Animal atualizado com sucesso!");
+            }
+            else
+            {
+                Console.WriteLine($"Animal com id {id} não existe!");
+            }
             Console.WriteLine();
         }
         private void ExcluirPet()
